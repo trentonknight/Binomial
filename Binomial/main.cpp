@@ -27,25 +27,19 @@ int main ()
         binomialCoefficient = GetBinomialCoefficient(n, k);
         cout << "Binomial Coefficent: " << binomialCoefficient << endl;
     }
-   
-          
     
-    
-          return 0;
+    return 0;
 }
 double Factorial(double fact,double lim){
-    double total = 0;
-    
-    do {
-        total = total + (fact * (fact - 1));
-        fact--;
-    }while((fact - 1) > lim);
-    
-    return total;
-   }
+    while(lim != 0){
+        fact = fact * (fact - 1);
+        --lim;
+    }
+    return fact;
+}
 double GetBinomialCoefficient(double n, double k){
     
-    double lim = n - k;
+    double lim = n - 1;
     double numerator = n;
     double denominator = k;
     double BC = 0;
@@ -54,11 +48,10 @@ double GetBinomialCoefficient(double n, double k){
         return BC = 1;
     }
     else{
-    numerator = Factorial(numerator,lim);
-    denominator = Factorial(denominator,0);
-    BC = numerator/denominator;
-    return BC;
+        numerator = Factorial(numerator,k - 1);
+        denominator = Factorial(denominator,0);
+        BC = numerator/denominator;
+        return BC;
     }
-    }
-    
+}
 
