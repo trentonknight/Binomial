@@ -35,17 +35,20 @@ int Factorial(int fact,int lim){
     int sumTwo = 0;
     int limitOne = lim;
     int limitTwo = lim;
+    int traverse = 0;
     double total = 0;
     
+    traverse = fact;
     while(limitOne != 1){
-        sumOne = fact * (fact -1);
+        sumOne = (fact * (--traverse));
         limitOne--;
-        fact--;
+        fact = sumOne;
     }
+    traverse = lim;
     while(limitTwo != 1){
-        sumTwo = lim * (lim -1);
+        sumTwo = (lim * (--traverse));
         limitTwo--;
-        lim--;
+        lim = sumTwo;
     }
     
     total = (sumOne)/(sumTwo);
@@ -59,7 +62,7 @@ int GetBinomialCoefficient(int n, int k){
     int fact = 0;
     
     //0 or final index
-    if(factoralTwo == 0 || k == 0){
+    if(factoralTwo == 0 || k == 0 || n == 0){
         fact = 1;   
     }
     else if(factoralTwo == 1 || factoralOne == 1){
