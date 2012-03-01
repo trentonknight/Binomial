@@ -8,16 +8,16 @@
 #include <iostream>
 #include <math.h>
 
-double Factorial(double fact,double lim);
-double GetBinomialCoefficient(double n, double k);
+int Factorial(int fact,int lim);
+int GetBinomialCoefficient(int n, int k);
 
 using namespace std;
 
 int main ()
 {
-    double n = 1;
-    double k = 0;
-    double binomialCoefficient = 0;
+    int n = 1;
+    int k = 0;
+    int binomialCoefficient = 0;
     
     while (n > 0) {
         cout << "Enter object n element for C(n,k): " << endl;
@@ -30,28 +30,50 @@ int main ()
     
     return 0;
 }
-double Factorial(double fact,double lim){
-    while(lim != 0){
-        fact = fact * (fact - 1);
-        --lim;
+int Factorial(int fact,int lim){
+    int sumOne = 0;
+    int sumTwo = 0;
+    int limitOne = lim;
+    int limitTwo = lim;
+    double total = 0;
+    
+    while(limitOne != 1){
+        sumOne = fact * (fact -1);
+        limitOne--;
+        fact--;
+    }
+    while(limitTwo != 1){
+        sumTwo = lim * (lim -1);
+        limitTwo--;
+        lim--;
+    }
+    
+    total = (sumOne)/(sumTwo);
+    
+    return total;
+}
+//n!/k!(n-k)!
+int GetBinomialCoefficient(int n, int k){
+    int factoralOne = k;
+    int factoralTwo = (n - k);
+    int fact = 0;
+    
+    //0 or final index
+    if(factoralTwo == 0 || k == 0){
+        fact = 1;   
+    }
+    else if(factoralTwo == 1 || factoralOne == 1){
+        fact = n;
+    }
+    else if(factoralOne < factoralTwo){
+        fact = Factorial(n,factoralOne);
+    }
+    else if(factoralOne > factoralTwo){
+        fact = Factorial(n,factoralTwo);
+    }
+    else if(factoralOne == factoralTwo){
+        fact = Factorial(n,factoralOne);
     }
     return fact;
-}
-double GetBinomialCoefficient(double n, double k){
-    
-    double lim = n - 1;
-    double numerator = n;
-    double denominator = k;
-    double BC = 0;
-    
-    if(k <= 0){
-        return BC = 1;
     }
-    else{
-        numerator = Factorial(numerator,k - 1);
-        denominator = Factorial(denominator,0);
-        BC = numerator/denominator;
-        return BC;
-    }
-}
 
