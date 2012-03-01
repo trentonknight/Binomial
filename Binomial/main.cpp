@@ -3,10 +3,9 @@
 //  Binomial
 //
 //  Created by Jason Mansfield on 2/26/12.
-
+//
 
 #include <iostream>
-#include <math.h>
 
 int Factorial(int fact,int lim);
 int GetBinomialCoefficient(int n, int k);
@@ -20,6 +19,7 @@ int main ()
     int binomialCoefficient = 0;
     
     while (n > 0) {
+        cout << "This program runs from a 0 index to object n. " << endl;
         cout << "Enter object n element for C(n,k): " << endl;
         cin >> n;
         cout << "Enter object k-combination for C(n,k): " << endl;
